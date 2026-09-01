@@ -1,0 +1,11 @@
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        maxsum=-(10**4)
+        sum=0
+        for num in nums:
+            if sum<0:
+                sum=0
+            sum+=num
+            maxsum=max(sum,maxsum)
+        return maxsum
+        
