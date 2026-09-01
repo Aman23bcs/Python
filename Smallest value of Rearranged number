@@ -1,0 +1,30 @@
+class Solution:
+    def smallestNumber(self, num: int) -> int:
+        if num==0:
+            return 0
+        arr=[]
+        negative=False
+        if num<0:
+            num*=-1
+            negative=True
+        while num>0:
+            a=num%10
+            arr.append(a)
+            num//=10
+        if negative:
+            arr.sort(reverse=True)
+            a=0
+            for i in range(len(arr)):
+                a=a*10+arr[i]
+            return -a
+        else:
+            arr.sort()
+            index=bisect_right(arr,0)
+            x=arr.pop(index)
+            arr1=[]
+            arr1.append(x)
+            arr1.extend(arr)
+            a=0
+            for i in range(len(arr1)):
+                a=a*10+arr1[i]
+            return a
